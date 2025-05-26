@@ -1,0 +1,12 @@
+
+{
+  "required": true,
+  "package": "com.ejemplo.customconduit",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "MixinConduitBlockEntity"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
