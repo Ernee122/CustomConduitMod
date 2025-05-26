@@ -1,0 +1,29 @@
+name: Compilar Mod
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Configurar JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: 17
+
+      - name: Conceder permisos de ejecución a Gradlew
+        run: chmod +x ./gradlew
+
+      - name: Compilar con Gradle
+        run: ./gradlew build
+
+      - name: Subir artefacto .jar
+        uses: actions/upload-artifact@v3
+        with:
+          name: CustomConduitMod
+          path: build/libs/*.jar
